@@ -1,0 +1,26 @@
+html
+head
+
+body
+    p(style= 'display:none',id='naamTabel') #{naam}
+    p(style= 'display:none',id='postTabel') #{post}
+table(id="tabel" class="table table table-striped table-hover")
+    thead(class="thead-dark")
+        tr
+            th Lijst
+    tbody
+        tr(id="row")
+script.
+    var postTabel = document.getElementById("postTabel");
+    var naamTabel = document.getElementById("naamTabel")
+    var post = postTabel.innerText.split(',');
+    var naam = naamTabel.innerText.split(',');
+    var tabel = document.getElementById("tabel");
+    for(var i= post.length-1;i>=0;i--){
+        var row = tabel.insertRow();
+        row.id="row";
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);        
+        cell1.innerHTML = naam[i];
+        cell2.innerHTML = post[i];
+    }
